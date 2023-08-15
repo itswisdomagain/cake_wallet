@@ -13,6 +13,7 @@ import 'package:cw_core/wallet_type.dart';
 import 'package:cake_wallet/view_model/wallet_creation_vm.dart';
 import 'package:cake_wallet/bitcoin/bitcoin.dart';
 import 'package:cake_wallet/haven/haven.dart';
+import 'package:cake_wallet/decred/decred.dart';
 
 part 'wallet_new_vm.g.dart';
 
@@ -45,6 +46,8 @@ abstract class WalletNewVMBase extends WalletCreationVM with Store {
             name: name, language: options as String);
       case WalletType.ethereum:
         return ethereum!.createEthereumNewWalletCredentials(name: name);
+      case WalletType.decred:
+        return decred!.createDecredNewWalletCredentials(name: name);
       default:
         throw Exception('Unexpected type: ${type.toString()}');;
     }

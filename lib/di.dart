@@ -60,6 +60,7 @@ import 'package:cake_wallet/ionia/ionia_merchant.dart';
 import 'package:cake_wallet/monero/monero.dart';
 import 'package:cake_wallet/haven/haven.dart';
 import 'package:cake_wallet/bitcoin/bitcoin.dart';
+import 'package:cake_wallet/decred/decred.dart';
 import 'package:cake_wallet/src/screens/ionia/cards/ionia_account_cards_page.dart';
 import 'package:cake_wallet/src/screens/ionia/cards/ionia_account_page.dart';
 import 'package:cake_wallet/src/screens/ionia/cards/ionia_custom_tip_page.dart';
@@ -759,6 +760,8 @@ Future setup({
         return bitcoin!.createLitecoinWalletService(_walletInfoSource, _unspentCoinsInfoSource!);
       case WalletType.ethereum:
         return ethereum!.createEthereumWalletService(_walletInfoSource);
+      case WalletType.decred:
+        return decred!.createDecredWalletService(_walletInfoSource, _unspentCoinsInfoSource!);
       default:
         throw Exception('Unexpected token: ${param1.toString()} for generating of WalletService');
     }

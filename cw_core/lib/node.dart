@@ -78,6 +78,8 @@ class Node extends HiveObject with Keyable {
         return Uri.http(uriRaw, '');
       case WalletType.ethereum:
         return Uri.https(uriRaw, '');
+      case WalletType.decred:
+        return Uri.http(uriRaw, '');
       default:
         throw Exception('Unexpected type ${type.toString()} for Node uri');
     }
@@ -129,6 +131,8 @@ class Node extends HiveObject with Keyable {
           return requestMoneroNode();
         case WalletType.ethereum:
           return requestElectrumServer();
+        case WalletType.decred:
+          return requestDecredNode();
         default:
           return false;
       }
@@ -211,4 +215,8 @@ class Node extends HiveObject with Keyable {
       return false;
     }
   }
+}
+
+  Future<bool> requestDecredNode() async {
+    return true;
 }
