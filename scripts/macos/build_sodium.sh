@@ -5,7 +5,7 @@
 SODIUM_PATH="${EXTERNAL_MACOS_SOURCE_DIR}/libsodium"
 SODIUM_URL="https://github.com/jedisct1/libsodium.git"
 
-echo "============================ SODIUM ============================"
+echo -e "\n\n============================ SODIUM ============================\n"
 
 echo "Cloning SODIUM from - $SODIUM_URL"
 git clone $SODIUM_URL $SODIUM_PATH --branch stable
