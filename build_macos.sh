@@ -20,6 +20,8 @@ echo -e "\n\n============================ cw_bitcoin mobx ======================
 cd cw_bitcoin && flutter pub get && flutter packages pub run build_runner build --delete-conflicting-outputs && cd ..
 echo -e "\n\n============================ cw_ethereum mobx ============================\n"
 cd cw_ethereum && flutter pub get && flutter packages pub run build_runner build --delete-conflicting-outputs && cd ..
+echo -e "\n\n============================ cw_decred mobx ============================\n"
+cd cw_decred && flutter pub get && flutter packages pub run build_runner build --delete-conflicting-outputs && cd ..
 echo -e "\n\n============================ app mobx ============================\n"
 flutter packages pub run build_runner build --delete-conflicting-outputs
 # update team and bundle in xcode => signing & capabilities
