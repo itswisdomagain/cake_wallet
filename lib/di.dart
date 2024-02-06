@@ -1060,7 +1060,7 @@ Future<void> setup({
       case WalletType.wownero:
         return wownero!.createWowneroWalletService(_walletInfoSource, _unspentCoinsInfoSource);
       case WalletType.decred:
-        return decred!.createDecredWalletService(_walletInfoSource);
+        return decred!.createDecredWalletService(_walletInfoSource, _unspentCoinsInfoSource);
       case WalletType.none:
         throw Exception('Unexpected token: ${param1.toString()} for generating of WalletService');
     }
