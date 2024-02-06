@@ -9,14 +9,16 @@ import 'package:cw_core/wallet_info.dart';
 import 'package:cw_core/wallet_type.dart';
 import 'package:hive/hive.dart';
 import 'package:collection/collection.dart';
+import 'package:cw_core/unspent_coins_info.dart';
 
 class DecredWalletService extends WalletService<
     DecredNewWalletCredentials,
     DecredRestoreWalletFromSeedCredentials,
     DecredRestoreWalletFromWIFCredentials> {
-  DecredWalletService(this.walletInfoSource);
+  DecredWalletService(this.walletInfoSource, this.unspentCoinsInfoSource);
 
   final Box<WalletInfo> walletInfoSource;
+  final Box<UnspentCoinsInfo> unspentCoinsInfoSource;
 
   static void init() async {
     // Use the general path for all dcr wallets as the general log directory.
@@ -40,7 +42,8 @@ class DecredWalletService extends WalletService<
       dataDir: credentials.walletInfo!.dirPath,
       password: credentials.password!,
     );
-    final wallet = DecredWallet(credentials.walletInfo!, credentials.password!);
+    final wallet = DecredWallet(credentials.walletInfo!, credentials.password!,
+        this.unspentCoinsInfoSource);
     await wallet.init();
     return wallet;
   }
@@ -53,7 +56,8 @@ class DecredWalletService extends WalletService<
       name: walletInfo.name,
       dataDir: walletInfo.dirPath,
     );
-    final wallet = DecredWallet(walletInfo, password);
+    final wallet =
+        DecredWallet(walletInfo, password, this.unspentCoinsInfoSource);
     await wallet.init();
     return wallet;
   }
@@ -72,7 +76,8 @@ class DecredWalletService extends WalletService<
       String currentName, String password, String newName) async {
     final currentWalletInfo = walletInfoSource.values.firstWhereOrNull(
         (info) => info.id == WalletBase.idFor(currentName, getType()))!;
-    final currentWallet = DecredWallet(currentWalletInfo, password);
+    final currentWallet =
+        DecredWallet(currentWalletInfo, password, this.unspentCoinsInfoSource);
 
     await currentWallet.renameWalletFiles(newName);
 

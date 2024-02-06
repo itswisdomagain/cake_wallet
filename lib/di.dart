@@ -873,7 +873,7 @@ Future<void> setup({
       case WalletType.solana:
         return solana!.createSolanaWalletService(_walletInfoSource);
       case WalletType.decred:
-        return decred!.createDecredWalletService(_walletInfoSource);
+        return decred!.createDecredWalletService(_walletInfoSource, _unspentCoinsInfoSource);
       default:
         throw Exception('Unexpected token: ${param1.toString()} for generating of WalletService');
     }
