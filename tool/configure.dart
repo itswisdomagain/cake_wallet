@@ -1428,6 +1428,8 @@ abstract class Decred {
 
   List<Unspent> getUnspents(Object wallet);
   void updateUnspents(Object wallet);
+
+  int heightByDate(DateTime date);
 }
 """;
 
