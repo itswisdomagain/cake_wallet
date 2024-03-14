@@ -1406,6 +1406,10 @@ abstract class Decred {
       {required String name,
       required String mnemonic,
       required String password});
+  WalletCredentials createDecredRestoreWalletFromPubkeyCredentials(
+      {required String name,
+      required String pubkey,
+      required String password});
   WalletService createDecredWalletService(Box<WalletInfo> walletInfoSource,
       Box<UnspentCoinsInfo> unspentCoinSource);
 
@@ -1433,6 +1437,8 @@ abstract class Decred {
   int heightByDate(DateTime date);
 
   List<String> getDecredWordList();
+
+  String pubkey(Object wallet);
 }
 """;
 
