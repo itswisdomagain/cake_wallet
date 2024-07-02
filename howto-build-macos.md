@@ -16,7 +16,7 @@ These steps will help you configure and execute a build of CakeWallet from its s
 ### 1. Installing Package Dependencies
 
 The following packages must be installed on your build system.
-Skip this step if they are already installed.
+Skip this step if they are already installed OR if building for only bitcoin and decred.
 
 `$ brew install python autoconf automake libtool doxygen graphviz`
 
