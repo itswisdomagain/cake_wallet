@@ -76,9 +76,10 @@ class ProvidersHelper {
           ProviderType.robinhood,
           ProviderType.moonpay,
         ];
+      case WalletType.decred:
+        return [ProviderType.askEachTime, ProviderType.onramper];
       case WalletType.none:
       case WalletType.haven:
-      case WalletType.decred:
         return [];
     }
   }
@@ -110,13 +111,14 @@ class ProvidersHelper {
           ProviderType.robinhood,
           ProviderType.moonpay,
         ];
+      case WalletType.decred:
+        return [ProviderType.askEachTime, ProviderType.onramper];
       case WalletType.monero:
       case WalletType.nano:
       case WalletType.banano:
       case WalletType.none:
       case WalletType.haven:
       case WalletType.wownero:
-      case WalletType.decred:
         return [];
     }
   }
