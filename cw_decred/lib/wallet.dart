@@ -40,8 +40,7 @@ abstract class DecredWalletBase
         this.watchingOnly = walletInfo.derivationPath == DecredWalletService.pubkeyRestorePath ||
             walletInfo.derivationPath == DecredWalletService.pubkeyRestorePathTestnet,
         this.balance = ObservableMap.of({CryptoCurrency.dcr: DecredBalance.zero()}),
-        this.isTestnet = walletInfo.derivationPath == DecredWalletService.seedRestorePathTestnet ||
-            walletInfo.derivationPath == DecredWalletService.pubkeyRestorePathTestnet,
+        this.isTestnet = walletInfo.network == DecredWalletService.testnet,
         super(walletInfo) {
     walletAddresses = DecredWalletAddresses(walletInfo);
     transactionHistory = DecredTransactionHistory();
