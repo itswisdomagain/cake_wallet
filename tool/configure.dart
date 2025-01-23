@@ -1088,15 +1088,12 @@ abstract class BitcoinCash {
   """;
 
   const bitcoinCashEmptyDefinition = 'BitcoinCash? bitcoinCash;\n';
-  const bitcoinCashCWDefinition =
-      'BitcoinCash? bitcoinCash = CWBitcoinCash();\n';
+  const bitcoinCashCWDefinition = 'BitcoinCash? bitcoinCash = CWBitcoinCash();\n';
 
   final output = '$bitcoinCashCommonHeaders\n' +
       (hasImplementation ? '$bitcoinCashCWHeaders\n' : '\n') +
       (hasImplementation ? '$bitcoinCashCwPart\n\n' : '\n') +
-      (hasImplementation
-          ? bitcoinCashCWDefinition
-          : bitcoinCashEmptyDefinition) +
+      (hasImplementation ? bitcoinCashCWDefinition : bitcoinCashEmptyDefinition) +
       '\n' +
       bitcoinCashContent;
 
@@ -1232,8 +1229,7 @@ abstract class NanoUtil {
   """;
 
   const nanoEmptyDefinition = 'Nano? nano;\nNanoUtil? nanoUtil;\n';
-  const nanoCWDefinition =
-      'Nano? nano = CWNano();\nNanoUtil? nanoUtil = CWNanoUtil();\n';
+  const nanoCWDefinition = 'Nano? nano = CWNano();\nNanoUtil? nanoUtil = CWNanoUtil();\n';
 
   final output = '$nanoCommonHeaders\n' +
       (hasImplementation ? '$nanoCWHeaders\n' : '\n') +
@@ -1448,18 +1444,13 @@ abstract class Decred {
       Box<UnspentCoinsInfo> unspentCoinSource);
 
   List<TransactionPriority> getTransactionPriorities();
-  TransactionPriority getMediumTransactionPriority();
   TransactionPriority getDecredTransactionPriorityMedium();
   TransactionPriority getDecredTransactionPrioritySlow();
   TransactionPriority deserializeDecredTransactionPriority(int raw);
 
-  int getFeeRate(Object wallet, TransactionPriority priority);
   Object createDecredTransactionCredentials(
       List<Output> outputs, TransactionPriority priority);
 
-  List<String> getAddresses(Object wallet);
-  String getAddress(Object wallet);
-  Future<void> generateNewAddress(Object wallet);
   List<AddressInfo> getAddressInfos(Object wallet);
   Future<void> updateAddress(Object wallet, String address, String label);
 
